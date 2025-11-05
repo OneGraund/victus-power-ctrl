@@ -1,0 +1,11 @@
+
+[Unit]
+Description=[Power profile control service autoswitching on different thermal zones]
+
+[Service]
+Type=simple
+StandardOutput=journal
+ExecStart=/usr/local/bin/victus-power-ctrl
+
+[Install]
+WantedBy=default.target
