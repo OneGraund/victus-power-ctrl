@@ -14,7 +14,6 @@ int read_cpu_temp() {
     fptr = fopen(tmpFileLoc, "r");
     if (fptr == NULL) {
         log_error("[read_temp] fopen temp file error message:");
-        fclose(fptr);
         return -1;
     }
     char strTemp[7];

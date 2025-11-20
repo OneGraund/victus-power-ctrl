@@ -40,3 +40,14 @@ To run in terminal do:
 ```bash
 sudo make run
 ```
+
+# To-Do
+- [ ] extend curves settings 
+  - [ ] add configuration of fan curves using config file
+  - [ ] add new graphs resembling curves (maybe ask user to use some website?)
+- [ ] add cli tool
+  - [ ] enable/disable panic-mode
+  - [ ] overwrite fan mode "on-the-go"
+- [ ] keyboard color ctrl too??
+
+# Issues
