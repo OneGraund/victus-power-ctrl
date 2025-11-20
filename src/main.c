@@ -106,7 +106,7 @@ int main() {
                 set_cpu_fan_if_unset(CPU_FAN_RPM_MAX);
                 set_gpu_fan_if_unset(GPU_FAN_RPM_MAX);
                 log_warning("DANGEROUS TEMPERATURE");
-            } else {
+            } else if (cpu_temp >= 0 && cpu_temp < 110 && gpu_temp >= 0 && gpu_temp < 110) {
                 status = set_cpu_fan_if_unset(cpu_fan_curve[cpu_temp]);
                 if (status < 0)
                     log_warning("[control_loop] set_cpu_fan_if_unset failed");
@@ -114,6 +114,8 @@ int main() {
 
                 if (status < 0)
                     log_warning("[control_loop] set_gpu_fan_if_unset failed");
+            } else {
+                log_warning("[control_loop] invalid temperature readings: cpu=%d gpu=%d", cpu_temp, gpu_temp);
             }
         }
 

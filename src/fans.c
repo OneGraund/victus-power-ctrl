@@ -45,7 +45,6 @@ int set_fan_speed(int fan_num, int RPM) {
     FILE *hwmon_fptr = fopen(hwmon_path, "w");
     if (!hwmon_fptr) {
         log_error("Could not open fan target file");
-        fclose(hwmon_fptr);
         return -1;
     }
     char str_temp[12];
@@ -77,7 +76,6 @@ int get_fan_speed(int fan_num) {
     log_debug("%s", fan_path);
     if (!fan_ptr) {
         log_error("[get_fan_speed] error opening %s", fan_path);
-        fclose(fan_ptr);
         return -1;
     }
 
@@ -98,6 +96,7 @@ fan_mode_t get_fan_mode() {
 
     char fan_mode_raw[2];
     fgets(fan_mode_raw, 2, pwm_fptr);
+    fclose(pwm_fptr);
 
     switch (fan_mode_raw[0]) {
         case '2': return AUTO;
